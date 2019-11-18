@@ -21,7 +21,7 @@ class FetchMovies extends React.Component {
             headers: {
                 'Content-Type': 'application/JSON',
             },
-            body: JSON.stringjify(this.state)
+            body: JSON.stringify(this.state),
         }
 
         e.preventDefault()
