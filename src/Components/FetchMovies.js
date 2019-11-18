@@ -1,9 +1,9 @@
 import React from 'react';
 import './FetchMovies.css'
 
-class FetchMovies extends React.Component{
-    state={
-        movie: '',
+class FetchMovies extends React.Component {
+    state = {
+        title: '',
         poster: '',
         comment: '',
     }
@@ -19,7 +19,7 @@ class FetchMovies extends React.Component{
         const config = {
             method:'POST',
             headers: {
-                'content-Type': 'application/JSON',
+                'Content-Type': 'application/JSON',
             },
             body: JSON.stringjify(this.state)
         }
@@ -27,36 +27,36 @@ class FetchMovies extends React.Component{
         e.preventDefault()
 
         fetch(url, config)
-            .then(res => res.json())
-            .then(res => {
-                if (res.error) {
-                    alert(res.error)
-                } else {
-                    alert(`${this.state.movie} a été ajouté avec succès!`)
-                }
-            }).catch(e => {
-                console.error(e);
-                alert("Erreur lors de l'ajout du film")
-            })
+        .then(res => res.json())
+        .then(res => {
+            if (res.error) {
+                alert(res.error);
+            } else {
+                alert(`${this.state.title} a été ajouté avec succès!`);
+            }
+        }).catch(e => {
+            console.error(e);
+            alert("Erreur lors de l'ajout du film");
+        });
     }
 
 
-    render(){
+    render() {
         return(
             <div className="FormMovies">
-                <h1>Saisi d'un film</h1>
+                <h1>Saisi un film</h1>
 
                 <form onSubmit={this.submitForm}>
                     <fieldset>
                     <legend>Informations</legend>
                     <div className="form-data">
-                        <label htmlFor="movie">Film</label>
+                        <label htmlFor="title">Film</label>
                         <input
                         type="text"
-                        id="movie"
-                        name="movie"
+                        id="title"
+                        name="title"
                         onChange={this.onChange}
-                        value={this.state.movie}
+                        value={this.state.title}
                         />
                     </div>
 
